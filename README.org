@@ -1,0 +1,24 @@
+
+* Carnegie Phonebook
+
+This is a solution for interview task created by Carnegie Technologies.
+
+** Task
+Please create a web app that will work as a phonebook with these functionalities:
+
+1. Create an account
+2. Login
+3. List my contacts
+4. Add contact
+5. Edit contact
+6. Delete contact
+7. Logout
+
+Please create:
+
+1. Database
+2. API (using Ruby on Rails)
+3. Web app (must be the "thin client" which generates its own pages + pages generated on the server musn't be used)
+4. GitHub project where you will keep everything.
+
+** Usage
