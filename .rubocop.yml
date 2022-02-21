@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+Style/Documentation:
+  Exclude:
+    - 'config/application.rb'
+    - 'app/models/application_record.rb'
