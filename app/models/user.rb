@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :contacts
+  extend Devise::Models
+  devise :database_authenticatable, :recoverable, :registerable, :validatable
+  include DeviseTokenAuth::Concerns::User
 
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates_uniqueness_of :email, case_sensitive: false
+  has_many :contacts
 end
