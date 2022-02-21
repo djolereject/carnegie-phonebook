@@ -12,6 +12,8 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.4'
 
 group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-doc'
   gem 'pry-rails'
   gem 'rspec-rails'
