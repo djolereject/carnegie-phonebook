@@ -1,7 +1,9 @@
 AllCops:
   Exclude:
     - 'bin/**/*'
+    - 'db/schema.rb'
 Style/Documentation:
   Exclude:
     - 'config/application.rb'
     - 'app/models/application_record.rb'
+    - 'db/migrate/**/*'
