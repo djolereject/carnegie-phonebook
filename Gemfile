@@ -14,6 +14,7 @@ gem 'rails', '~> 6.0.4'
 group :development, :test do
   gem 'pry-doc'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
