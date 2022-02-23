@@ -6,7 +6,8 @@ import { Container, Row } from 'react-bootstrap';
 import useLocalStorage from './useLocalStorage';
 import Navigation from './Navigation';
 import Home from './Home';
-import Login from './Login';
+import Login from './auth/Login';
+import Register from './auth/Register';
 import Alert from './Alert';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home logged={logged} />} />
           <Route exact path="/login" element={<Login login={setUser} alert={setErrors}/>} />
+          <Route exact path="/register" element={<Register register={setUser} alert={setErrors}/>} />
         </Routes>
       </Container>
     </Router>

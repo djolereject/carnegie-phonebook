@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Row } from 'react-bootstrap';
 
 const Navigation=({logged, logout})=> {
   return (
@@ -9,7 +9,11 @@ const Navigation=({logged, logout})=> {
       <Navbar.Brand className="">
         { logged ?
           <NavLink to="/" onClick={()=>logout(null)} >Log Out</NavLink> :
-          <NavLink to="/login">Log In</NavLink> }
+          <>
+            <NavLink className="px-2" to="/login">Log In</NavLink>
+            /
+            <NavLink className="px-2" to="/register">Sign Up</NavLink>
+          </>}
       </Navbar.Brand>
     </Navbar>
   );
