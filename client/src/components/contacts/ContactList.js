@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import useAxios from "axios-hooks";
+import axios from 'axios';
+import ErrorParser from './ErrorParser';
 
 const ContactList=({headers, alert})=> {
   const [{ data, loading, error }, refetch] = useAxios({url: "/api/v1/contacts", headers: headers});
@@ -8,6 +10,19 @@ const ContactList=({headers, alert})=> {
   useEffect(()=>{
     if(error) { alert(error.response.data.errors) }
   }, [error])
+
+  const deleteItem=(item)=> {
+    if(window.confirm('Are you sure?')) {
+
+      axios.delete(`/api/v1/contacts/${item.id}`, {headers: headers})
+        .then(response => {
+          window.location.reload();
+        })
+        .catch(error => {
+          alert(ErrorParser(error.response.data));
+        });
+    }
+  };
 
   return (
     <Table striped bordered hover className="my-3">
@@ -25,7 +40,11 @@ const ContactList=({headers, alert})=> {
               <td>{index + 1}</td>
               <td>{ item.name }</td>
               <td>{ item.phone }</td>
-              <td>actions</td>
+              <td className="col-4">
+                <Button variant="primary" href="/">Show</Button>
+                <Button variant="warning" href="/" className="mx-3">Edit</Button>
+                <Button variant="danger" onClick={()=>deleteItem(item)}>Delete</Button>
+              </td>
             </tr>
           ); })}
       </tbody>

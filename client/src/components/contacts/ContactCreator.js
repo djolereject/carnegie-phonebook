@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button } from 'react-bootstrap';
-import { axios, post } from 'axios';
+import { post } from 'axios';
 import ContactForm from './ContactForm';
 import ErrorParser from './ErrorParser';
 
@@ -12,11 +12,9 @@ const ContactCreator=({headers, alert})=> {
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
 
-    const config = {headers: headers};
-
-    post("/api/v1/contacts", {"contact": {"name": name, "phone": phone}}, config)
+    post("/api/v1/contacts", {"contact": {"name": name, "phone": phone}}, {headers: headers})
       .then(response => {
-        console.log(response);
+        window.location.reload();
       })
       .catch(error => {
         alert(ErrorParser(error.response.data));
