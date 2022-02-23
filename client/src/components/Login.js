@@ -3,7 +3,7 @@ import { Row, Col, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { post } from 'axios';
 
-const Login=({login})=> {
+const Login=({login, alert})=> {
 
   const navigate = useNavigate();
 
@@ -11,7 +11,7 @@ const Login=({login})=> {
     event.preventDefault();
     // const email = document.getElementById("email").value;
     // const password = document.getElementById("password").value;
-    const request = {"email": "email@gmail.com", "password": "password"};
+    const request = {"email": "email.gmail.com", "password": "password"};
 
     post("/api/v1/auth/sign_in", request)
       .then(response => {
@@ -20,7 +20,9 @@ const Login=({login})=> {
         login(result);
         navigate('/');
       })
-      .catch(error => console.log('error', error));
+      .catch(error => {
+        alert(error.response.data.errors);
+      });
   };
 
   return (
