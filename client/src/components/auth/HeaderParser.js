@@ -1,4 +1,4 @@
-
+import React from "react";
 
 const HeaderParser=(header)=> {
   return {
@@ -6,7 +6,7 @@ const HeaderParser=(header)=> {
     'client': header['client'],
     'access-token': header['access-token'],
     'token-type': header['token-type'],
-    'expiry': header['expiry']
+    'Content-Type': 'application/json'
   }
 };
 export default HeaderParser;

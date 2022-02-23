@@ -11,23 +11,18 @@ import Register from './auth/Register';
 import Alert from './Alert';
 
 function App() {
-  const [user, setUser] = useLocalStorage("user", null);
-  const [logged, setLogged] = useState(false);
+  const [headers, setHeaders] = useLocalStorage("headers", null);
   const [errors, setErrors] = useState([]);
-
-  useEffect(()=>{
-    setLogged(user == null ? false : true);
-  }, [user])
 
   return (
     <Router>
-      <Navigation logged={logged} logout={setUser} />
+      <Navigation logged={headers != null} logout={setHeaders} />
       { errors.length > 0 && <Alert messages={errors} /> }
       <Container>
         <Routes>
-          <Route exact path="/" element={<Home logged={logged} />} />
-          <Route exact path="/login" element={<Login login={setUser} alert={setErrors}/>} />
-          <Route exact path="/register" element={<Register register={setUser} alert={setErrors}/>} />
+          <Route exact path="/" element={<Home headers={headers} alert={setErrors} />} />
+          <Route exact path="/login" element={<Login login={setHeaders} alert={setErrors}/>} />
+          <Route exact path="/register" element={<Register register={setHeaders} alert={setErrors}/>} />
         </Routes>
       </Container>
     </Router>
