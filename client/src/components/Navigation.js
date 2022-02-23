@@ -8,7 +8,7 @@ const Navigation=({logged, logout})=> {
       <Navbar.Brand> Carnegie Phonebook </Navbar.Brand>
       <Navbar.Brand className="">
         { logged ?
-          <NavLink to="/" onClick={()=>logout(null)} >Log Out</NavLink> :
+          <NavLink to="/login" onClick={()=>logout(null)} >Log Out</NavLink> :
           <>
             <NavLink className="px-2" to="/login">Log In</NavLink>
             /

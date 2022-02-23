@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Table, Button } from 'react-bootstrap';
 import useAxios from "axios-hooks";
 import axios from 'axios';
 import ErrorParser from './ErrorParser';
 
 const ContactList=({headers, alert})=> {
-  const [{ data, loading, error }, refetch] = useAxios({url: "/api/v1/contacts", headers: headers});
+  const [{ data, error }] = useAxios({url: "/api/v1/contacts", headers: headers});
 
   useEffect(()=>{
     if(error) { alert(error.response.data.errors) }
-  }, [error])
+  }, [error, alert])
 
   const deleteItem=(item)=> {
     if(window.confirm('Are you sure?')) {
@@ -40,9 +40,8 @@ const ContactList=({headers, alert})=> {
               <td>{index + 1}</td>
               <td>{ item.name }</td>
               <td>{ item.phone }</td>
-              <td className="col-4">
-                <Button variant="primary" href="/">Show</Button>
-                <Button variant="warning" href="/" className="mx-3">Edit</Button>
+              <td className="col-3">
+                <Button variant="primary" href={`/contacts/${item.id}`} className="mx-3">Edit</Button>
                 <Button variant="danger" onClick={()=>deleteItem(item)}>Delete</Button>
               </td>
             </tr>
