@@ -22,3 +22,19 @@ Please create:
 4. GitHub project where you will keep everything.
 
 ** Usage
+*** Setup
+- Create and set database with ~rails db:setup~
+- Install all react libraries by going to ~client~ dir and run ~yarn install~
+
+*** How to test
+All tests can be run by command ~rspec~
+
+*** How to run
+Easiest way to start both apps is via foreman gem. Install the gem by ~gem install foreman~ and then run by ~foreman start -f Procfile.dev~.
+Other way would be to start rails app via ~rails server -p 3001~ and separately start react app by going to the client dir and run ~PORT=3000 npm start~.
+
+*** Dependencies
+- ruby 2.5.5
+- rails 6.0.4
+- postgresql 13
+- npm 8.4.1
